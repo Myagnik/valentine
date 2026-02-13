@@ -9,7 +9,6 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'><text y='24' font-size='24'>❤️</text></svg>") 16 16, auto;
 }
 
 body {
@@ -165,7 +164,7 @@ body {
   font-size: 1.4rem;
   font-weight: 700;
   border-radius: 50px;
-  cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'><text y='24' font-size='24'>❤️</text></svg>") 16 16, pointer;
+  cursor: pointer;
   transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
   box-shadow: 0 4px 25px rgba(255, 51, 102, 0.5),
               0 0 60px rgba(255, 51, 102, 0.2);
@@ -205,7 +204,7 @@ body {
   font-size: 1rem;
   font-weight: 600;
   border-radius: 50px;
-  cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'><text y='24' font-size='24'>❤️</text></svg>") 16 16, pointer;
+  cursor: pointer;
   transition: all 0.15s ease-out;
   position: absolute;
   white-space: nowrap;
