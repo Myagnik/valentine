@@ -1,0 +1,246 @@
+@import "tailwindcss";
+
+:root {
+  --background: #1a0011;
+  --foreground: #fff0f5;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
+  overflow: hidden;
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+
+/* Floating hearts background */
+@keyframes float-up {
+  0% {
+    transform: translateY(100vh) rotate(0deg) scale(0);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+    transform: translateY(90vh) rotate(20deg) scale(1);
+  }
+  90% {
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateY(-20vh) rotate(360deg) scale(0.5);
+    opacity: 0;
+  }
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    filter: drop-shadow(0 0 8px rgba(255, 100, 150, 0.6));
+    transform: scale(1);
+  }
+  50% {
+    filter: drop-shadow(0 0 20px rgba(255, 100, 150, 0.9));
+    transform: scale(1.05);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
+}
+
+@keyframes bounce-in {
+  0% {
+    transform: scale(0) rotate(-10deg);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.2) rotate(5deg);
+  }
+  70% {
+    transform: scale(0.9) rotate(-2deg);
+  }
+  100% {
+    transform: scale(1) rotate(0deg);
+    opacity: 1;
+  }
+}
+
+@keyframes wiggle {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(-3deg); }
+  75% { transform: rotate(3deg); }
+}
+
+@keyframes confetti-fall {
+  0% {
+    transform: translateY(-100vh) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh) rotate(720deg);
+    opacity: 0;
+  }
+}
+
+@keyframes heart-burst {
+  0% {
+    transform: scale(0);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.5);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(0);
+    opacity: 0;
+  }
+}
+
+@keyframes sparkle {
+  0%, 100% {
+    opacity: 0;
+    transform: scale(0) rotate(0deg);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1) rotate(180deg);
+  }
+}
+
+.floating-heart {
+  position: fixed;
+  animation: float-up linear infinite;
+  pointer-events: none;
+  z-index: 0;
+  user-select: none;
+}
+
+.main-heart {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+.shimmer-text {
+  background: linear-gradient(
+    90deg,
+    #ff6b9d 0%,
+    #ffd4e5 25%,
+    #ff85b3 50%,
+    #ffd4e5 75%,
+    #ff6b9d 100%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmer 3s linear infinite;
+}
+
+.bounce-in {
+  animation: bounce-in 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
+}
+
+.wiggle {
+  animation: wiggle 0.5s ease-in-out;
+}
+
+/* Yes button styles */
+.yes-btn {
+  background: linear-gradient(135deg, #ff6b9d, #ff3366, #ff1a75);
+  color: white;
+  border: none;
+  padding: 18px 60px;
+  font-size: 1.4rem;
+  font-weight: 700;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  box-shadow: 0 4px 25px rgba(255, 51, 102, 0.5),
+              0 0 60px rgba(255, 51, 102, 0.2);
+  position: relative;
+  overflow: hidden;
+  letter-spacing: 1px;
+}
+
+.yes-btn::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    45deg,
+    transparent 30%,
+    rgba(255, 255, 255, 0.2) 50%,
+    transparent 70%
+  );
+  animation: shimmer 2s linear infinite;
+}
+
+.yes-btn:hover {
+  transform: scale(1.15) translateY(-3px);
+  box-shadow: 0 8px 40px rgba(255, 51, 102, 0.7),
+              0 0 80px rgba(255, 51, 102, 0.3);
+}
+
+/* No button styles */
+.no-btn {
+  background: linear-gradient(135deg, #666, #444);
+  color: #ccc;
+  border: 2px solid #555;
+  padding: 14px 40px;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.15s ease-out;
+  position: absolute;
+  white-space: nowrap;
+  z-index: 10;
+}
+
+.no-btn:hover {
+  background: linear-gradient(135deg, #555, #333);
+}
+
+/* Celebration overlay */
+.celebration-overlay {
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(ellipse at center, rgba(255, 20, 80, 0.15), rgba(26, 0, 17, 0.95));
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+}
+
+.confetti {
+  position: fixed;
+  width: 10px;
+  height: 10px;
+  border-radius: 2px;
+  animation: confetti-fall linear forwards;
+  pointer-events: none;
+  z-index: 101;
+}
+
+.sparkle-star {
+  position: fixed;
+  pointer-events: none;
+  z-index: 102;
+  animation: sparkle 1.5s ease-in-out infinite;
+}
