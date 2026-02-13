@@ -362,7 +362,7 @@ export default function Valentine() {
             marginBottom: "8px",
           }}
         >
-          Will You Be My
+          Chhaya, Will You Be My
         </h1>
         <h1
           className="shimmer-text"
